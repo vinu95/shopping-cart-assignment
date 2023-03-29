@@ -1,0 +1,61 @@
+@use '../../styles/resolutions' as resolutions;
+
+.signup__Container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  column-gap: 5rem;
+
+  .signup__Content {
+    padding-top: 1.4rem;
+  }
+
+  @media screen and (max-width: resolutions.$tab_resoltion) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.signup__Form {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem;
+}
+
+.signup__FormGroup {
+  display: flex;
+  flex-direction: column-reverse;
+
+  label {
+    display: inline-block;
+    color: #5a5858;
+    margin-top: 1.4rem;
+  }
+  input {
+    display: block;
+    border: none;
+    border-bottom: 0.125rem solid #5a5858;
+    width: 20rem;
+    padding: 0.5rem 0;
+
+    &:focus {
+      border-color: #0a93d2;
+      + label {
+        color: #0a93d2;
+      }
+    }
+  }
+}
+
+button {
+  background-color: #bb0350;
+  border: none;
+  cursor: pointer;
+  color: #f7f7f7;
+  padding: 0.6rem;
+  margin-top: 1.4rem;
+
+  &:focus {
+    border: 1px solid #0a93d2;
+  }
+}
