@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { setCartVisibility } from "../../redux/features/cartSlice";
 import { logout } from "../../redux/features/userSlice";
 import styles from "./layout.module.scss";
 
 function Header() {
   const dispatch = useDispatch();
   const { isUserLoggedIn } = useSelector((state) => state.users);
+  const { totalProducts } = useSelector((state) => state.carts);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -13,7 +15,7 @@ function Header() {
   };
   return (
     <div className={styles.header__Container}>
-      <header>
+      <header aria-label="Main Navigation">
         <div className={styles.header__NavigationContainer}>
           <Link to="/" className={styles.site__Logo}>
             <img
@@ -35,15 +37,15 @@ function Header() {
               </Link>
             </nav>
           ) : (
-            <nav>
+            <nav className={styles.Unauthorized__User}>
               <Link to="/login">SignIn</Link>
               <Link to="/signup">Register</Link>
             </nav>
           )}
-          <button>
+          {isUserLoggedIn === true && <button onClick={() => dispatch(setCartVisibility(true))}>
             <img src="/static/images/cart.svg" alt="" />
-            <span>0 items</span>
-          </button>
+            <span aria-live="assertive" aria-label="1 Item added to cart">{totalProducts} items</span>
+          </button>}
         </div>
       </header>
     </div>

@@ -13,7 +13,7 @@ export const initialState = {
 };
 
 export const bannerSlice = createSlice({
-  name: "userSlice",
+  name: "bannerSlice",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -23,12 +23,12 @@ export const bannerSlice = createSlice({
       })
       .addCase(fetchBanners.fulfilled, (state, action) => {
         state.bannersData = action.payload;
-        state.pending = false;
+        state.loading = false;
       })
       .addCase(fetchBanners.rejected, (state, action) => {
         state.error = action.payload;
-        state.bannersData.data = [];
-        state.pending = false;
+        state.bannersData = [];
+        state.loading = false;
       });
   },
 });

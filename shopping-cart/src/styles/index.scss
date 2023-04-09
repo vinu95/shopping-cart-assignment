@@ -1,9 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Dosis:400,600,700);
-
 $dosis-font: "Dosis", sans-serif;
 
 body {
   margin: 0;
   padding: 0;
   font-family: $dosis-font !important;
+}
+
+#root {
+  isolation: isolate;
+}
+
+.disable__backdrop {
+  overflow: hidden !important;
+  #root {
+    pointer-events: none;
+    background-color: white;
+    opacity: 0.5;
+  }
 }

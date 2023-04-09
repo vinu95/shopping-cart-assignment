@@ -1,0 +1,22 @@
+@use "../../styles/resolutions" as resolutions;
+
+.ProductsPage_Wrapper {
+  display: flex;
+  margin: 1rem 0.2rem;
+  gap: 0.2rem;
+}
+
+.Products__List__Container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  margin: 0 0.2rem;
+
+  @media screen and (max-width: resolutions.$tab_resoltion) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

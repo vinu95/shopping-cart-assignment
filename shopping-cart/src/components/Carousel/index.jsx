@@ -1,10 +1,10 @@
 import Carousel from "nuka-carousel";
-import styles from './carousel.module.scss';
+import styles from "./carousel.module.scss";
 
 function CarouselComponent({ bannersData = [] }) {
   return (
     <section aria-label="Products Carousel">
-      <div className={styles.home__CarouselContainer}>
+      <div className={styles.Carousel__Container}>
         <Carousel wrapAround autoplay>
           {bannersData?.map((eachBanner) => {
             return (

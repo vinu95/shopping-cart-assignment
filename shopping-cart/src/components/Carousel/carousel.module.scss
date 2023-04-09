@@ -1,6 +1,14 @@
-.home__CarouselContainer {
-    img {
-        width: 100%;
-        object-fit: fill;
-    }
+@use "../../styles/resolutions" as resolutions;
+
+.Carousel__Container {
+  margin: 0.5rem 5rem;
+  box-shadow: 0 8px 6px -6px #8d8d8d;
+  img {
+    width: 100%;
+    object-fit: fill;
+  }
+
+  @media screen and (max-width: resolutions.$tab_resoltion) {
+    margin: unset;
+  }
 }

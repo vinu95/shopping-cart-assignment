@@ -12,6 +12,9 @@ import {
 } from "redux-persist";
 import { userReducer } from "./features/userSlice";
 import { bannerReducer } from "./features/bannerSlice";
+import { categoryReducer } from "./features/categorySlice";
+import { productReducer } from "./features/productSlice";
+import { cartReducer } from "./features/cartSlice";
 
 const persistConfig = {
   key: "root",
@@ -22,13 +25,16 @@ const persistConfig = {
 const rootReducer = combineReducers({
   users: userReducer,
   banners: bannerReducer,
+  categories: categoryReducer,
+  products: productReducer,
+  carts: cartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  devTools: process.env.NODE_ENV !== "production",
+  // devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

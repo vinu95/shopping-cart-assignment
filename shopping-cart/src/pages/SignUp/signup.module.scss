@@ -20,6 +20,19 @@
   display: flex;
   flex-direction: column;
   padding: 1.4rem;
+
+  & button {
+    background-color: #bb0350;
+    border: none;
+    cursor: pointer;
+    color: #f7f7f7;
+    padding: 0.6rem;
+    margin-top: 1.4rem;
+  
+    &:focus {
+      border: 1px solid #0a93d2;
+    }
+  }
 }
 
 .signup__FormGroup {
@@ -47,15 +60,11 @@
   }
 }
 
-button {
-  background-color: #bb0350;
-  border: none;
-  cursor: pointer;
-  color: #f7f7f7;
-  padding: 0.6rem;
-  margin-top: 1.4rem;
-
-  &:focus {
-    border: 1px solid #0a93d2;
+.input__Error_Message {
+  display: flex;
+  margin-top: 0.5rem;
+  img{
+    width: 16px;
+    margin-right: 5px;
   }
 }

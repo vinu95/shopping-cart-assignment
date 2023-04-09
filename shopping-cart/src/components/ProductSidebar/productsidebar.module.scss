@@ -1,0 +1,28 @@
+@use "../../styles/resolutions" as resolutions;
+
+.Category__Wrapper {
+  min-width: 150px;
+  position: relative;
+  background-color: #eeeeee;
+  @media screen and (max-width: resolutions.$tab_resoltion) {
+    min-width: 120px;
+  }
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    display: none;
+  }
+}
+.CategoryList {
+  list-style: none;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  li {
+    padding: 1.5rem;
+    cursor: pointer;
+  }
+  .Selected__Category {
+    background-color: #626262;
+    color: #eeeeee;
+  }
+}

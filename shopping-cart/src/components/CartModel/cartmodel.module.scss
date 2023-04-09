@@ -1,0 +1,123 @@
+@use "../../styles/resolutions" as resolutions;
+
+.Cart__Container {
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0;
+    width: 40vw;
+    height: 80vh;
+    min-height: 400px;
+    background-color: #e3e2e2;
+    border: 2px solid #8d8d8d;
+}
+
+.Cart__Header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem;
+    background-color: #1f1f1f;
+    color: #dedcdc;
+    & button {
+        background-color: #1f1f1f;
+        color: #ffffff;
+        padding: 0.5rem 1rem;
+        border: none;
+    }
+}
+
+.Cart__Promo {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    margin: 0.6rem;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+.Cart__Footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+
+    & button {
+        display: flex;
+        justify-content: space-between;
+        min-width: 90%;
+        margin-bottom: 0.5rem;
+        background-color: #bb0350;
+        padding: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #f7f7f7;
+    
+        &:focus {
+        border: 2px solid #0a93d2;
+    }
+    }
+}
+
+.CartItem__Body {
+    // height: 200px;
+    // min-height: 530px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.Cart__Item__Wrapper {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    margin: 0.8rem 0;
+}
+
+.CartItem__Wrapper {
+    display: flex;
+
+    & img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+    }
+}
+
+.CartItem__Description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.CartItem__Qty__Container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 200px;
+
+    & button {
+        height: 1.5rem;
+        border: 1px solid;
+        border-radius: 50%;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    & > p:last-child {
+        &::before {
+            content: "X";
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+        }
+    }
+}
+
+.CartItem__Price__Wrapper {
+    display: flex;
+    justify-content: space-between;
+}

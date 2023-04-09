@@ -1,33 +1,40 @@
-@use '../../styles/resolutions' as resolutions;
+@use "../../styles/resolutions" as resolutions;
 
 .header__Container {
   box-shadow: 0px 0px 10px #c4c1c1;
 
-  header {
+  & header {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0 0.5rem 1rem;
-    // padding-right: 0;
-    // padding-bottom: 0.5rem;
+    position: relative;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
 
     @media screen and (max-width: resolutions.$tab_resoltion) {
       padding: 1rem;
+      margin: unset;
+    }
+
+    @media screen and (max-width: resolutions.$mobile_resoltion) {
+      font-size: 12px;
     }
   }
 }
 
 .site__Logo {
-  height: 80px;
-  img {
-    height: 100%;
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    width: 100px;
+    img {
+      width: 100%;
+    }
   }
 }
 
 .header__NavigationContainer {
   display: flex;
-  gap: 10rem;
+  gap: 5rem;
 
-  nav {
+  & nav {
     display: flex;
     align-items: flex-end;
     a {
@@ -40,10 +47,10 @@
   }
 
   @media screen and (max-width: resolutions.$tab_resoltion) {
-    gap: 3rem;
+    gap: 1rem;
   }
   @media screen and (max-width: resolutions.$mobile_resoltion) {
-    nav {
+    & nav {
       display: none;
     }
   }
@@ -52,12 +59,12 @@
 .header__UserActionsContainer {
   display: flex;
   flex-direction: column;
+  font-weight: 600;
   // gap: 1rem;
 
-  nav {
+  & nav {
     display: flex;
     justify-content: flex-end;
-    // align-items: flex-end;
     a {
       text-decoration: none;
       color: #5a5858;
@@ -66,8 +73,8 @@
       font-size: 0.8rem;
     }
   }
-  button {
-    display: flex;   
+  & button {
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 60px;
@@ -76,9 +83,27 @@
     color: #5a5858;
     margin-top: unset;
     width: 100%;
+    padding: 1rem;
+    border: none;
     img {
+      width: 32px;
+      // height: 100%;
+    }
+  }
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    & nav {
+      display: none;
+    }
+    .Unauthorized__User {
+      display: block;
+    }
+    & button {
+      position: absolute;
+      right: 0.1rem;
+      bottom: 0.5rem;
+      width: max-content;
       height: 100%;
-      // fill: #d10057;
     }
   }
 }
@@ -91,20 +116,16 @@
   background-color: #f7f7f7;
   height: 3rem;
 
-  span {
+  & span {
     position: relative;
-    left: 3rem;
+    left: 6rem;
     top: 1rem;
   }
 
-  // @media screen and (max-width: resolutions.$tab_resoltion) {
-  //   position: absolute;
-  //   left: 0;
-  //   bottom: 0;
-  //   width: 100%;
-  // }
-
   @media screen and (max-width: resolutions.$mobile_resoltion) {
     font-size: 12px;
+    & span {
+      left: 1rem;
+    }
   }
 }

@@ -3,7 +3,8 @@ import { Navigate } from "react-router-dom";
 
 function RequireAuth({ children }) {
   const { isUserLoggedIn } = useSelector((state) => state.users);
-  return isUserLoggedIn === true ? children : <Navigate to="/login" replace/>;
+  if (isUserLoggedIn !== true) return <Navigate to="/login" replace />;
+  return children;
 }
 
 export default RequireAuth;
