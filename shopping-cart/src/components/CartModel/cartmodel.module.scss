@@ -1,123 +1,206 @@
 @use "../../styles/resolutions" as resolutions;
 
 .Cart__Container {
-    position: fixed;
-    right: 0.5rem;
-    bottom: 0;
-    width: 40vw;
-    height: 80vh;
-    min-height: 400px;
-    background-color: #e3e2e2;
-    border: 2px solid #8d8d8d;
+  position: fixed;
+  right: 0.5rem;
+  bottom: 0;
+  width: 520px;
+  height: 80vh;
+  min-height: 400px;
+  background-color: #e3e2e2;
+  border: 2px solid #8d8d8d;
+
+  @media screen and (max-width: resolutions.$tab_resoltion) {
+    width: 100%;
+    margin-right: -0.7rem;
+    height: calc(100% - 8rem);
+  }
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    height: 100%;
+  }
 }
 
 .Cart__Header {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem;
+  background-color: #1f1f1f;
+  color: #dedcdc;
+  font-weight: 600;
+  & button {
     background-color: #1f1f1f;
-    color: #dedcdc;
-    & button {
-        background-color: #1f1f1f;
-        color: #ffffff;
-        padding: 0.5rem 1rem;
-        border: none;
-    }
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+  }
 }
 
 .Cart__Promo {
-    display: flex;
-    justify-content: flex-start;
-    background-color: #ffffff;
-    margin: 0.6rem;
-    padding: 0.5rem;
-    gap: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  margin: 0.6rem;
+  padding: 0.5rem;
+  gap: 1rem;
+
+  & img {
+    width: 140px;
+    height: 70px;
+    object-fit: contain;
+  }
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    font-size: 12px;
+    align-items: center;
+  }
 }
 
 .Cart__Footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  // min-height: 140px;
+  background-color: #ffffff;
 
-    & button {
-        display: flex;
-        justify-content: space-between;
-        min-width: 90%;
-        margin-bottom: 0.5rem;
-        background-color: #bb0350;
-        padding: 1rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        color: #f7f7f7;
-    
-        &:focus {
-        border: 2px solid #0a93d2;
+  & button {
+    display: flex;
+    justify-content: space-between;
+    min-width: 90%;
+    margin: 0.5rem;
+    background-color: #bb0350;
+    padding: 1rem;
+    border-color: #bb0350;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #f7f7f7;
+
+    &:focus {
+      border: 2px solid #0a93d2;
     }
-    }
+  }
+
+  .Empty__Cart {
+    justify-content: center;
+  }
 }
 
 .CartItem__Body {
-    // height: 200px;
-    // min-height: 530px;
-    max-height: 500px;
-    overflow-y: scroll;
+  // height: 200px;
+  // min-height: 530px;
+  max-height: 600px;
+  overflow-y: scroll;
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    min-height: 600px;
+  }
+
+  .Empty__Cart__Text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12rem 1rem;
+  }
 }
 
 .Cart__Item__Wrapper {
-    padding: 1.5rem;
-    background-color: #ffffff;
-    margin: 0.8rem 0;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  margin: 0.8rem 0;
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    padding: unset;
+    font-size: 12px;
+    margin-right: 0.5rem;
+  }
 }
 
 .CartItem__Wrapper {
-    display: flex;
+  display: flex;
+  gap: 0.3rem;
+  & img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
 
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
     & img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
     }
+  }
 }
 
 .CartItem__Description {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media screen and (max-width: resolutions.$tab_resoltion) {
+    h1 {
+      font-size: 1rem;
+    }
+  }
 }
 
 .CartItem__Qty__Container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // max-width: 200px;
 
+  > * {
+    margin: 0 0.6rem;
+  }
+
+  & button {
+    height: 24px;
+    width: 24px;
+    border: 1px solid;
+    border-radius: 50%;
+    background-color: #bb0350;
+    color: #ffffff;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  & > p:last-child {
+    &::before {
+      content: "X";
+      width: 24px;
+      height: 24px;
+      margin-right: 1rem;
+    }
+  }
+  @media screen and (max-width: resolutions.$tab_resoltion) {
     & button {
-        height: 1.5rem;
-        border: 1px solid;
-        border-radius: 50%;
-
-        &:hover{
-            cursor: pointer;
-        }
+      height: 24px;
+      width: 24px;
+      border-radius: 5px;
     }
-
-    & > p:last-child {
-        &::before {
-            content: "X";
-            width: 24px;
-            height: 24px;
-            margin-right: 1rem;
-        }
+  }
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    > * {
+      margin: 0 0.3rem;
     }
+  }
 }
 
 .CartItem__Price__Wrapper {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    > p {
+      padding-right: 0.7rem;
+    }
+  }
 }

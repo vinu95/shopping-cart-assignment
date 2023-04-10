@@ -108,6 +108,35 @@
   }
 }
 
+.Mobile__Navigation__Dropdown {
+  display: none;
+
+  @media screen and (max-width: resolutions.$mobile_resoltion) {
+    display: block;
+    margin-bottom: 1rem;
+    & nav {
+      display: flex;
+      flex-direction: column;
+      background-color: #5a5858;
+      width: 100%;
+      z-index: 2;
+      a{
+        text-decoration: none;
+        padding: 1rem 2rem;
+        color: #ffffff;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .Mobile__Dropdown__Icon {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    background-color: #bb0350;
+  }
+}
+
 .footer {
   position: relative;
   left: 0;

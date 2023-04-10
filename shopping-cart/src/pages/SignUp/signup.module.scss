@@ -37,12 +37,15 @@
 
 .signup__FormGroup {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   label {
     display: inline-block;
     color: #5a5858;
-    margin-top: 1.4rem;
+    margin-top: 1rem;
+    &:focus-within {
+      color: #0a93d2;
+    }
   }
   input {
     display: block;
@@ -50,12 +53,8 @@
     border-bottom: 0.125rem solid #5a5858;
     width: 20rem;
     padding: 0.5rem 0;
-
     &:focus {
       border-color: #0a93d2;
-      + label {
-        color: #0a93d2;
-      }
     }
   }
 }

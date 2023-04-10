@@ -12,8 +12,8 @@ function Cart() {
 
   useEffect(() => {
     dispatch(calculateTotalPrice());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedProducts, totalProducts])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedProducts, totalProducts]);
 
   return (
     <Portal id="product-cart">

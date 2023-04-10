@@ -29,7 +29,7 @@
   }
 
   @media screen and (max-width: resolutions.$tab_resoltion) {
-    min-width: 250px;
+    font-size: 12px;
     .Product__tablet__Wrapper {
       display: flex;
       position: relative;

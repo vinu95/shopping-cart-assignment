@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -11,13 +12,13 @@ const CheckPasswordValidation = (value) => {
   if (value?.length < 6) {
     return "Password should contain minimum 6 charecters";
   }
-  if (value?.indexOf(' ') !== -1) {
+  if (value?.indexOf(" ") !== -1) {
     return "Password should not contain white space charecters";
   }
-  if(!/^\d*[a-zA-Z][a-zA-Z\d]*$/.test(value)) {
+  if (!/^\d*[a-zA-Z][a-zA-Z\d]*$/.test(value)) {
     return "Password should contain alphanumeric charecters";
   }
-}
+};
 function SignUpForm({ handleFormSubmit }) {
   const {
     register,
@@ -37,15 +38,17 @@ function SignUpForm({ handleFormSubmit }) {
         aria-label="signup form"
       >
         <div className={styles.signup__FormGroup}>
-          <input
-            type="text"
-            name="firstName"
-            aria-invalid={errors.firstName ? "true" : "false"}
-            aria-required="true"
-            aria-label="firstName"
-            {...register("firstName", { required: true, maxLength: 40 })}
-          />
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="firstName">
+            First Name
+            <input
+              type="text"
+              name="firstName"
+              aria-invalid={errors.firstName ? "true" : "false"}
+              aria-required="true"
+              aria-label="firstName"
+              {...register("firstName", { required: true, maxLength: 40 })}
+            />
+          </label>
         </div>
         {errors?.firstName && (
           <div className={styles.input__Error_Message}>
@@ -56,14 +59,16 @@ function SignUpForm({ handleFormSubmit }) {
           </div>
         )}
         <div className={styles.signup__FormGroup}>
-          <input
-            type="text"
-            name="lastName"
-            aria-invalid={errors.lastName ? "true" : "false"}
-            aria-required="true"
-            {...register("lastName", { required: true, maxLength: 40 })}
-          />
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="lastName">
+            Last Name
+            <input
+              type="text"
+              name="lastName"
+              aria-invalid={errors.lastName ? "true" : "false"}
+              aria-required="true"
+              {...register("lastName", { required: true, maxLength: 40 })}
+            />
+          </label>
         </div>
         {errors?.lastName && (
           <div className={styles.input__Error_Message}>
@@ -74,14 +79,19 @@ function SignUpForm({ handleFormSubmit }) {
           </div>
         )}
         <div className={styles.signup__FormGroup}>
-          <input
-            type="email"
-            name="email"
-            aria-invalid={errors.email ? "true" : "false"}
-            aria-required="true"
-            {...register("email", { required: true, pattern: '/[a-z0-9]+@[a-z]+.[a-z]{2,3}/' })}
-          />
-          <label htmlFor="lastName">Email</label>
+          <label htmlFor="lastName">
+            Email
+            <input
+              type="email"
+              name="email"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-required="true"
+              {...register("email", {
+                required: true,
+                pattern: /[a-z0-9]+@[a-z]+.[a-z]{2,3}/i,
+              })}
+            />
+          </label>
         </div>
         {errors?.email && (
           <div className={styles.input__Error_Message}>
@@ -92,40 +102,47 @@ function SignUpForm({ handleFormSubmit }) {
           </div>
         )}
         <div className={styles.signup__FormGroup}>
-          <input
-            type="password"
-            name="password"
-            aria-invalid={errors.password ? "true" : "false"}
-            aria-required="true"
-            {...register("password", { required: true, 
-              validate: CheckPasswordValidation })}
-          />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">
+            Password
+            <input
+              type="password"
+              name="password"
+              aria-invalid={errors.password ? "true" : "false"}
+              aria-required="true"
+              {...register("password", {
+                required: true,
+                validate: CheckPasswordValidation,
+              })}
+            />
+          </label>
         </div>
         {errors?.password && (
           <div className={styles.input__Error_Message}>
             <img src={ErrorIcon} alt="" />
             <span role="alert">
-              {errors?.password?.type && (errors?.password?.message || "You must enter a password")}
+              {errors?.password?.type &&
+                (errors?.password?.message || "You must enter a password")}
             </span>
           </div>
         )}
         <div className={styles.signup__FormGroup}>
-          <input
-            type="password"
-            name="confirmPassword"
-            aria-invalid={errors.confirmPassword ? "true" : "false"}
-            aria-required="true"
-            {...register("confirmPassword", {
-              required: true,
-              validate: (value) => {
-                if (watch("password") !== value) {
-                  return "Your passwords do no match";
-                }
-              },
-            })}
-          />
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">
+            Confirm Password
+            <input
+              type="password"
+              name="confirmPassword"
+              aria-invalid={errors.confirmPassword ? "true" : "false"}
+              aria-required="true"
+              {...register("confirmPassword", {
+                required: true,
+                validate: (value) => {
+                  if (watch("password") !== value) {
+                    return "Your passwords do no match";
+                  }
+                },
+              })}
+            />
+          </label>
         </div>
         {errors?.confirmPassword && (
           <div className={styles.input__Error_Message}>
@@ -143,7 +160,7 @@ function SignUpForm({ handleFormSubmit }) {
   );
 }
 
-function LoginForm({ handleLogin }) {
+function LoginForm({ handleLogin, loginFailed }) {
   const {
     register,
     handleSubmit,
@@ -160,26 +177,36 @@ function LoginForm({ handleLogin }) {
         onSubmit={handleSubmit(handleLogin)}
       >
         <div className={styles.signup__FormGroup}>
-          <input
-            type="email"
-            name="email"
-            aria-invalid={errors.email ? "true" : "false"}
-            aria-required="true"
-            {...register("email", { required: true})}
-          />
-          <label htmlFor="lastName">Email</label>
+          <label htmlFor="lastName">
+            Email
+            <input
+              type="email"
+              name="email"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-required="true"
+              {...register("email", {
+                required: true,
+                pattern: /[a-z0-9]+@[a-z]+.[a-z]{2,3}/i,
+              })}
+            />
+          </label>
         </div>
         <div className={styles.signup__FormGroup}>
-          <input
-            type="password"
-            name="password"
-            aria-invalid={errors.password ? "true" : "false"}
-            aria-required="true"
-            {...register("password", { required: true})}
-          />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">
+            Password
+            <input
+              type="password"
+              name="password"
+              aria-invalid={errors.password ? "true" : "false"}
+              aria-required="true"
+              {...register("password", {
+                required: true,
+                validate: CheckPasswordValidation,
+              })}
+            />
+          </label>
         </div>
-        {(errors?.password || errors?.email) && (
+        {(errors?.password || errors?.email || loginFailed) && (
           <div className={styles.input__Error_Message}>
             <img src={ErrorIcon} alt="" />
             <span role="alert">Invalid Username or Password</span>
@@ -195,6 +222,7 @@ function SignUp({ page }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userDetails, isUserLoggedIn } = useSelector((state) => state.users);
+  const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = (user) => {
     dispatch(signUp(user));
@@ -210,7 +238,7 @@ function SignUp({ page }) {
       navigate("/home");
       return;
     }
-    
+    setLoginFailed(true);
     return;
   };
   return isUserLoggedIn === true ? (
@@ -218,7 +246,9 @@ function SignUp({ page }) {
   ) : (
     <>
       {page === "signup" && <SignUpForm handleFormSubmit={handleSubmit} />}
-      {page === "login" && <LoginForm handleLogin={handleLogin} />}
+      {page === "login" && (
+        <LoginForm handleLogin={handleLogin} loginFailed={loginFailed} />
+      )}
     </>
   );
 }
